@@ -36,7 +36,7 @@ pipeline {
           sh "mvn sonar:sonar \
   -Dsonar.projectKey=maven-jenkins-pipeline2 \
   -Dsonar.host.url=http://192.168.56.101:9999 \
-  -Dsonar.login=${TOKEN}"
+  -Dsonar.login='0dd0f00e0f52c397d2ed0174b77c4bdd23c73efb'
         }
       }}
     }
