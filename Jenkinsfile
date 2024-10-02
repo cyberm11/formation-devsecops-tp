@@ -8,6 +8,7 @@ pipeline {
               archive 'target/*.jar' //so that they can be downloaded later
             }
         }   
+  }
 //-------------------------
     stage('UNIT test & jacoco ') {
       steps {
@@ -25,7 +26,7 @@ pipeline {
     stage('Docker Build and Push') {
       steps {
         withCredentials([string(credentialsId: 'svc-all', variable: 'DOCKER_HUB_PASSWORD')]) {
-          sh 'sudo docker login -u hrefnhaila -p $DOCKER_HUB_PASSWORD'
+          sh 'sudo docker login -u svc-all-p $DOCKER_HUB_PASSWORD'
           sh 'printenv'
           sh 'sudo docker build -t hrefnhaila/devops-app:""$GIT_COMMIT"" .'
           sh 'sudo docker push hrefnhaila/devops-app:""$GIT_COMMIT""'
@@ -60,4 +61,4 @@ stage('Vulnerability Scan - Docker Trivy') {
 
 //--------------------------
 
-
+}
