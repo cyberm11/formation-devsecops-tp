@@ -33,7 +33,7 @@ pipeline {
     stage('SonarQube_scanne') {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-          withCredentials([string(credentialsId: 'svc-all', variable: 'TOKEN')]){
+          withCredentials([string(credentialsId: 'administrator', variable: 'TOKEN')]){
           sh "mvn sonar:sonar \
   -Dsonar.projectKey=maven-jenkins-pipeline2 \
   -Dsonar.host.url=http://192.168.56.101:9999 \
